@@ -40,6 +40,14 @@ public class Profile {
     @Column(columnDefinition = "jsonb")
     List<String> links;
 
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    List<Experience> experiences = new ArrayList<>();
+
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    List<Project> projects = new ArrayList<>();
+
     String summary;
 
 }
