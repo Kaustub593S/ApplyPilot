@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,20 +30,15 @@ public class Profile {
     User user;
 
     @Column(nullable = false)
-    String name;
+    String fullName;
 
     @Size(max = 10,min=10)
             //regex
-    String phoneNo;
+    String phone;
 
-    @ElementCollection
-    @CollectionTable(
-            name = "profile_links",
-            joinColumns = @JoinColumn(name = "profile_id")
-    )
-    @Column(name = "link")
-    private List<String> links = new ArrayList<>();
-
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    List<String> links;
 
     String summary;
 

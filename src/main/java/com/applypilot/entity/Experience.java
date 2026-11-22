@@ -3,8 +3,11 @@ package com.applypilot.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -23,21 +26,19 @@ public class Experience {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "profile_id", nullable = false)
-    private Profile profile;
+    Profile profile;
 
     @Column(nullable = false)
-    String jobTitle;
+    String title;
 
     @Column(nullable = false)
-    String organizationName;
+    String org;
 
-    @Column(nullable = false)
     LocalDate startDate;
+    LocalDate endDate;          // null means current
 
-    @Column(nullable = false)
-    LocalDate endDate;
-
-    @Column(nullable = false)
-    String summary;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    List<String> bullets;
 
 }

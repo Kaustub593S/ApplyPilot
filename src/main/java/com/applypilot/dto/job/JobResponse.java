@@ -1,9 +1,8 @@
 package com.applypilot.dto.job;
 
 
-import tools.jackson.databind.JsonNode;
-
 import java.time.Instant;
+import java.util.Map;
 import java.util.UUID;
 
 public record JobResponse(
@@ -11,7 +10,7 @@ public record JobResponse(
         String company,
         String role,
         String url,
-        JsonNode analysisJson,
+        Map<String,Object> analysisJson,
         Instant createdAt
 ) {
 

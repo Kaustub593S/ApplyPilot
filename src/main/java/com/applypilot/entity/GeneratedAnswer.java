@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name="generateAnswers")
+@Table(name="generated_answers")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class GeneratedAnswer {
     @Id

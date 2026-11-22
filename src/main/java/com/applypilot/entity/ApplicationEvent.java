@@ -17,7 +17,7 @@ import java.util.UUID;
 @Builder
 @Table(name="application_events")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ApplicationEvents {
+public class ApplicationEvent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
