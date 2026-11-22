@@ -1,0 +1,9 @@
+Task-1
+Creation of Entities and Dtos
+    ->So creation fo Entities and Dtos...the coding part was actually easy ngl
+    ->But understanding the use of every Entity is wht took So much Time
+    ->Also I had created Dtos before But through this project I actually learned How to figure
+      wht all Dtos are actually needed for the project.
+
+Task-2
+Flyway and Database
