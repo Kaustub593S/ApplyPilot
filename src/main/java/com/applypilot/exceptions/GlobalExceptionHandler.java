@@ -15,6 +15,11 @@ public class GlobalExceptionHandler {
     ResponseEntity<Map<String, Object>> notFound(ResourceNotFoundException ex) {
         return ResponseEntity.status(404).body(Map.of("error", ex.getMessage()));
     }
+    @ExceptionHandler(EmailAlreadyUsedException.class)
+    ResponseEntity<Map<String, Object>> emailExists(EmailAlreadyUsedException ex) {
+        return ResponseEntity.status(400).body(Map.of("error", ex.getMessage()));
+    }
+
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     ResponseEntity<Map<String, Object>> invalid(MethodArgumentNotValidException ex) {
