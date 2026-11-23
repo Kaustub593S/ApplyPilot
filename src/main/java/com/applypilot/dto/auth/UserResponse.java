@@ -1,7 +1,9 @@
 package com.applypilot.dto.auth;
 
+import java.util.UUID;
+
 public record UserResponse(
-        Long id,
+        UUID id,
         String email,
         String name
 ) {

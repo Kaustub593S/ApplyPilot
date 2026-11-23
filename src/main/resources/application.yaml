@@ -19,3 +19,6 @@ spring:
   flyway:
     enabled: true
 
+app:
+  temp-user-id: "bb1b94fb-4d46-4a3c-8d5c-64b72677189c"
+
