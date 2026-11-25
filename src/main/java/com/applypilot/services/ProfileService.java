@@ -1,5 +1,6 @@
 package com.applypilot.services;
 
+import com.applypilot.config.CurrentUser;
 import com.applypilot.dto.profile.*;
 import com.applypilot.entity.Experience;
 import com.applypilot.entity.Profile;
@@ -22,9 +23,7 @@ public class ProfileService {
     private final ProfileRepository profileRepository;
     private final UserRepository userRepository;
     private final ProfileMapper profileMapper;
-
-    @Value("${app.temp-user-id}")   // TEMP: replaced by the logged-in user in Week 2
-    private UUID currentUserId;
+    private final CurrentUser currentUser;
 
     @Transactional(readOnly = true)
     public ProfileResponse getProfile() {
@@ -43,9 +42,9 @@ public class ProfileService {
 
     @Transactional
     public ProfileResponse updateProfile(UpdateProfileRequest req) {
-        Profile profile = profileRepository.findByUserId(currentUserId)
+        Profile profile = profileRepository.findByUserId(currentUser.id())
                 .orElseGet(() -> Profile.builder()
-                        .user(userRepository.getReferenceById(currentUserId))
+                        .user(userRepository.getReferenceById(currentUser.id()))
                         .build());
 
         profileMapper.updateProfileFields(req, profile);
@@ -72,7 +71,7 @@ public class ProfileService {
     }
 
     private Profile findProfile() {
-        return profileRepository.findByUserId(currentUserId)
+        return profileRepository.findByUserId(currentUser.id())
                 .orElseThrow(() -> new ResourceNotFoundException("Profile not found"));
     }
 }

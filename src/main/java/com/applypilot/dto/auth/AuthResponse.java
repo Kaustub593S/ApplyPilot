@@ -1,7 +1,10 @@
 package com.applypilot.dto.auth;
 
 public record AuthResponse(
-        String token,
-        UserResponse user
+        String accesstoken,
+        String refreshToken,
+        String tokenType,
+       long expiresInSeconds
 ) {
+
 }
