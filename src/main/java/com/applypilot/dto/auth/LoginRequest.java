@@ -8,7 +8,7 @@ public record LoginRequest(
         @Email
         @NotBlank
         String email,
-        @Column(nullable = false, length = 60)
-        String passwordHash
+        @NotBlank
+        String password
 ) {
 }

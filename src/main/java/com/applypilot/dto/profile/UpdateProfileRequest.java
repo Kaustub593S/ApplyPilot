@@ -8,12 +8,13 @@ import java.util.List;
 public record UpdateProfileRequest(
         @NotBlank
         String fullName,
-        Long phone,
+        String phone,
         String summary,
         List<String> links,
         @Valid
         List<ExperienceRequest> experiences,
         @Valid
-        List<ProjectRequest> projects) {
+        List<ProjectRequest> projects
+) {
 
 }
